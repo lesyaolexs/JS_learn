@@ -4,7 +4,7 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 var wordsArray = ['cappuccino', 'dog', 'present', 'fanny', 'street', 'head'];
-var word = 'test';//wordsArray[Math.floor(Math.random() * wordsArray.length)];
+var word = wordsArray[Math.floor(Math.random() * wordsArray.length)];
 var leaves = 6;
 
 
@@ -52,7 +52,7 @@ function guesses(t) {
             }
 
         }
-        x.disabled = true
+        t.disabled = true
     }
 
 
