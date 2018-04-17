@@ -46,7 +46,7 @@ function guesses(t) {
         }
         else {
             leaves-- ;
-            document.getElementById('images_hangman').src= 'hangman_image/part'+ 6-leaves + '.jpg';
+            document.getElementById('images_hangman').src= 'hangman_image/part'+ (6-leaves) + '.jpg';
             if (leaves === 0){
                 document.getElementById('game_over').innerHTML = 'Loser';
             }
