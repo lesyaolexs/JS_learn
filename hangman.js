@@ -3,30 +3,28 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-var wordsArray = ['cappuccino', 'dog', 'present', 'fanny', 'street', 'head'];
+var wordsArray = ['cappuccino', 'dog', 'present', 'funny', 'street', 'head'];
 var word = wordsArray[Math.floor(Math.random() * wordsArray.length)];
-var overAttempt = 6;
-var attempt = overAttempt;
+var maxAttempt = 6;
+var attemptsLeft = maxAttempt;
 
 
 //create buttons for alphabet letters
 function buttons() {
     for (i = 0; i < alphabet.length; i++) {
-        var buttons_letters = document.createElement('button');
-        buttons_letters.appendChild(document.createTextNode(alphabet[i]));
-        buttons_letters.setAttribute('onclick','guess(this)');
-        document.getElementById("buttons_alphabet").appendChild(buttons_letters);
+        var alphabetChar = document.createElement('button');
+        alphabetChar.appendChild(document.createTextNode(alphabet[i]));
+        alphabetChar.setAttribute('onclick','guess(this)');
+        document.getElementById("buttonsAlphabet").appendChild(alphabetChar);
     }
-
 }
 
 // show guess word
 function guessWord() {
     for (i = 0; i < word.length; i++) {
-        var guess_word = document.createElement('ul');
-        guess_word.appendChild(document.createTextNode('_'));
-        document.getElementById('guess_word').appendChild(guess_word);
-
+        var guessChar = document.createElement('ul');
+        guessChar.appendChild(document.createTextNode('_'));
+        document.getElementById('guessWord').appendChild(guessChar);
     }
 }
 
@@ -34,28 +32,29 @@ function guessWord() {
 
 function guess(buttonElement) {
 
-    var guess_letter = buttonElement.innerHTML;
+    var guessLetter = buttonElement.innerHTML;
 
     buttonElement.disabled = true;
 
     for (i = 0; i < word.length; i++) {
-        if (word[i] === guess_letter) {
-            document.getElementById('guess_word').children[i].innerHTML = guess_letter;
+        if (word[i] === guessLetter) {
+            document.getElementById('guessWord').children[i].innerHTML = guessLetter;
         }
     }
 
-    if (document.getElementById('guess_word').innerHTML.indexOf(guess_letter) === -1) {
-                attempt--;
-                document.getElementById('images_hangman').src = 'hangman_image/part' + (overAttempt - attempt) + '.jpg';
-                document.getElementById('game_over').innerHTML = 'Try again!';
+
+    if (document.getElementById('guessWord').innerHTML.indexOf(guessLetter) === -1) {
+        attemptsLeft--;
+        document.getElementById('imagesHangman').src = 'hangman_image/part' + (maxAttempt - attemptsLeft) + '.jpg';
+        document.getElementById('gameOver').innerHTML = 'Try again!';
     }
 
 
-    if (attempt===0){
-                document.getElementById('game_over').innerHTML = 'Loser';
+    if (attemptsLeft===0){
+        document.getElementById('gameOver').innerHTML = 'Loser';
     }
-    else if ('_' in document.getElementById('guess_word').innerHTML === false){
-            document.getElementById('game_over').innerHTML = 'Win!';
+    else if (document.getElementById('guessWord').innerHTML.indexOf('_') === -1 ){
+        document.getElementById('gameOver').innerHTML = 'Win!';
     }
 
 }
@@ -64,18 +63,3 @@ function guess(buttonElement) {
 
 var buttonRestart = document.createElement('button');
 buttonRestart.document.getElementById('buttonRestart');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
