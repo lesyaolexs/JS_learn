@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <script language="JavaScript" src="hangman.js"></script>
+</head>
+<body>
+<h1>Hangman!</h1>
+<p>Use the alphabet below to guess the word</p>
+
+<div id="buttonsAlphabet"></div>
+
+<span id="guessWord"></span>
+
+
+<script>
+        buttons();
+        guessWord();
+</script>
+
+<img id="imagesHangman" src="hangman_image/part0.jpg">
+
+<div id="gameOver"></div>
+<button id="buttonRestart" onclick="restart()">Restart</button>
+
+
+
+</body>
+</html>
